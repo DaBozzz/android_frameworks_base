@@ -37,11 +37,6 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 
-//imports for toast icons
-import android.app.ActivityManager;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -436,24 +431,6 @@ public class Toast {
                 if (context == null) {
                     context = mView.getContext();
                 }
-                
-                //add toast icons
-                ImageView appIcon = (ImageView) mView.findViewById(android.R.id.icon);
- -                if (appIcon != null) {
- -                    ActivityManager am =
- -                            (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
- -                    if (!am.isPackageInForeground(packageName)) {
- -                        PackageManager pm = context.getPackageManager();
- -                        Drawable icon = null;
- -                        try {
- -                            icon = pm.getApplicationIcon(packageName);
- -                        } catch (PackageManager.NameNotFoundException e) {
- -                            // nothing to do
- -                        }
- -                        appIcon.setImageDrawable(icon);
- -                    }
- -              }
-                
                 mWM = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
                 // We can resolve the Gravity here by using the Locale for getting
                 // the layout direction
